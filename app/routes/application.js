@@ -1,10 +1,6 @@
 import Route                 from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { parseResponse }     from 'ember-simple-auth/authenticators/oauth2-implicit-grant';
-import fetch                 from 'fetch';
-import ENV                   from 'supabase-client/config/environment';
-
-const apiKey   = ENV.SUPABASE_KEY;
 
 export default class ApplicationRoute extends Route {
   @service session;
