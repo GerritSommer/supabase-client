@@ -25,7 +25,12 @@ module.exports = function (environment) {
     contentSecurityPolicy: {
       'connect-src': "'self' " + process.env.SUPABASE_BASE_URL,
       'img-src':     "'self' ",
+    },
+
+    pageTitle: {
+      replace: true
     }
+
   };
 
   if (environment === 'development') {
@@ -46,6 +51,10 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV["ember-cli-qunit"] = {
+      useLintTree: false
+    };
   }
 
   if (environment === 'production') {

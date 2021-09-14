@@ -1,10 +1,51 @@
 'use strict';
 
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp        = require('ember-cli/lib/broccoli/ember-app');
+const ENV             = EmberApp.env();
+const isProductionEnv = ENV === 'production';
+const isTestEnv       = ENV === 'test';
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+
+    tests:   isTestEnv,
+    hinting: isTestEnv,
+    // hinting: false,
+
+    fingerprint: {
+      enabled:    isProductionEnv
+    },
+
+    minifyJS: {
+      enabled: isProductionEnv
+    },
+
+    minifyCSS: {
+      enabled: isProductionEnv
+    },
+
+    autoImport: {
+      exclude: ['qunit']
+    },
+
+    'ember-cli-babel': {
+      comments:        false,
+      includePolyfill: isProductionEnv,
+    },
+    'ember-cli-terser': {
+      enabled: (isProductionEnv),
+    },
+
+    sourcemaps: {
+      enabled: !isProductionEnv,
+      extensions: ['js']
+    },
+
+    babel: {
+      sourceMaps: 'inline',
+      plugins: [ require.resolve('ember-auto-import/babel-plugin') ]
+    }
+
   });
 
   // Use `app.import` to add additional libraries to the generated
