@@ -10,8 +10,9 @@ export default class AuthenticatedRoute extends Route {
   }
 
   model() {
-    return this.store.fetch('user', {
-      namespace: 'auth/v1'
-    })
+    return this.store.queryRecord('user', { current: true });
+    // return this.store.fetch('user', {
+    //   namespace: 'auth/v1'
+    // });
   }
 }
