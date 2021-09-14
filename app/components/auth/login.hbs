@@ -1,0 +1,36 @@
+<form {{on "submit" this.login}}>
+  <label for="email">
+    Email
+  </label>
+
+  <Input
+    id="email"
+    @type="email"
+    @value={{this.email}}
+  />
+
+  <label for="password">
+    password
+  </label>
+
+  <Input
+    id="password"
+    @type="password"
+    @value={{this.password}}
+  />
+
+  <button type="submit">
+    Login
+  </button>
+
+  <LinkTo @route="application">
+    Cancel
+  </LinkTo>
+
+</form>
+
+{{#if this.errorMessage}}
+  <p>
+    {{this.errorMessage}}
+  </p>
+{{/if}}

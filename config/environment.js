@@ -21,6 +21,11 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    contentSecurityPolicy: {
+      'connect-src': "'self' " + process.env.SUPABASE_BASE_URL,
+      'img-src':     "'self' ",
+    }
   };
 
   if (environment === 'development') {

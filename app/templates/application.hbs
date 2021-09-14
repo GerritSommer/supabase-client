@@ -1,7 +1,16 @@
 {{page-title "SupabaseClient"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<nav>
+  <ul>
+    {{#if this.session.isAuthenticated}}
+      <li>
+        <button type="button" {{on "click" this.logout}}>logout</button>
+        <li><LinkTo @route="authenticated.password">password</LinkTo></li>
+      </li>
+    {{else}}
+      <li><LinkTo @route="login">Login</LinkTo></li>
+    {{/if}}
+  </ul>
+</nav>
 
 {{outlet}}
