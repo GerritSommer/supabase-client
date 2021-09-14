@@ -27,14 +27,4 @@ export default class AuthLoginComponent extends Component {
     }
   }
 
-  // @action
-  // requestMagicLink() {
-  //   const applicationAdapter = this.store.adapterFor('application');
-
-    // this.store.fetch('magiclink', {
-    //   method:    'POST',
-    //   namespace: 'auth/v1',
-    //   body:      { email: 'gerrit.sommer@outlook.com' },
-    // });
-  // }
 }
