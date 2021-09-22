@@ -1,0 +1,41 @@
+<svg width="1em" height="100%" viewBox="0 0 160 100">
+  <circle
+    cx="100" cy="50" r="47.5"
+    fill-width="5"
+    fill="currentColor" opacity=".75"
+    class="text-yellow-300 fill-current"
+  />
+  <circle
+    cx="85" cy="50" r="47.5"
+    fill-width="5"
+    fill="currentColor" opacity=".75"
+    class="text-yellow-500 fill-current"
+  />
+  <circle
+    cx="70" cy="50" r="47.5"
+    fill-width="5"
+    fill="currentColor" opacity=".75"
+    class="text-yellow-600 fill-current"
+  />
+  <circle
+    cx="55" cy="50" r="47.5"
+    fill-width="5"
+    fill="currentColor" opacity=".75"
+    class="text-red-600 fill-current"
+  />
+</svg>
+
+<!-- <svg width="3em" viewBox="0 0 110 105">
+  <circle
+    cx="45" cy="45" r="40"
+    fill-width="5"
+    fill="currentColor" opacity=".8"
+    class="text-red-600 fill-red-700"
+  />
+  <circle
+    cx="60" cy="60" r="40"
+    stroke="yellow" fill-width="5"
+    fill="currentColor" opacity=".8"
+    class="text-yellow-400 fill-yellow-500"
+  />
+</svg> -->

@@ -1,36 +1,68 @@
-<form {{on "submit" this.login}}>
-  <label for="email">
-    Email
-  </label>
+<div class="flex h-full">
+  <form class="self-center w-full max-w-sm mx-auto p-4" {{on "submit" this.login}}>
 
-  <Input
-    id="email"
-    @type="email"
-    @value={{this.email}}
-  />
+    <div class="flex justify-center">
+      {{svg-jar "logo" width="4em" height="4em"}}
+    </div>
 
-  <label for="password">
-    password
-  </label>
+    <div class="mb-4">
+      <div class="mb-1">
+        <label class="block text-gray-500 font-bold mb-1" for="password">
+          Email
+        </label>
+      </div>
+      <div>
+        <Input
+          id="email"
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          placeholder="jane-doe@email.com"
+          @type="email"
+          @value={{this.email}}
+        />
+      </div>
+    </div>
 
-  <Input
-    id="password"
-    @type="password"
-    @value={{this.password}}
-  />
+    <div class="mb-4">
+      <div class="mb-1">
+        <label class="block text-gray-500 font-bold mb-1" for="inline-password">
+          Password
+        </label>
+      </div>
+      <div>
+        <Input
+          id="password"
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          placeholder="******************"
+          @type="password"
+          @value={{this.password}}
+        />
+      </div>
+    </div>
+    <div class="flex justify-center space-around mt-6">
+      <button
+        type="submit"
+        disabled={{this.isRequesting}}
+        class="shadow bg-blue-900 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+      >
+        Login
+      </button>
+      &nbsp;
+      <LinkTo
+        @route="application"
+        disabled={{this.isRequesting}}
+        class="hover:bg-gray-50 focus:shadow-outline focus:outline-none text-gray font-bold py-2 px-4 rounded"
+      >
+        Cancel
+      </LinkTo>
+    </div>
+  </form>
+  {{!--
 
-  <button type="submit">
-    Login
-  </button>
+  {{#if this.errorMessage}}
+    <p>
+      {{this.errorMessage}}
+    </p>
+  {{/if}}
+   --}}
 
-  <LinkTo @route="application">
-    Cancel
-  </LinkTo>
-
-</form>
-
-{{#if this.errorMessage}}
-  <p>
-    {{this.errorMessage}}
-  </p>
-{{/if}}
+</div>

@@ -1,0 +1,19 @@
+<div
+  class="relative inline-block text-left"
+  {{click-outside this.onClickOutside}}
+  ...attributes
+>
+  {{yield this.toggle to="trigger"}}
+
+  {{#if this.isOpen}}
+    <div
+      tabindex="-1"
+      role="menu"
+      class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 rounded-md shadow-lg outline-none"
+    >
+
+      {{yield this.close to="menu"}}
+
+    </div>
+  {{/if}}
+</div>

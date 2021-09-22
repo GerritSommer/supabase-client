@@ -10,12 +10,13 @@ export default class AuthLoginComponent extends Component {
   @tracked email        = '';
   @tracked password     = '';
   @tracked errorMessage = '';
+  @tracked isRequesting = false;
 
   @action
   async login(event) {
     event.preventDefault();
-    this.errorMessage = undefined;
-    console.log('a');
+    this.errorMessage = null;
+    this.isRequesting = true;
     try {
       await this.session.authenticate(
         'authenticator:v1/password',
@@ -24,6 +25,8 @@ export default class AuthLoginComponent extends Component {
       );
     } catch (error) {
       this.errorMessage = error.error_description;
+    } finally {
+      this.isRequesting = false;
     }
   }
 

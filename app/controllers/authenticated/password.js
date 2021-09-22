@@ -1,28 +1,30 @@
-import Controller  from '@ember/controller';
-import { action }  from '@ember/object';
-import { tracked } from '@glimmer/tracking';
+import Controller            from '@ember/controller';
+import { inject as service } from '@ember/service';
+import { action }            from '@ember/object';
+import { tracked }           from '@glimmer/tracking';
 
 export default class AuthenticatedPasswordController extends Controller {
+  @service session;
+  @service router;
   queryParams = [ 'type' ]
 
   type = '';
 
   @tracked email          = '';
-  @tracked password       = '';
   @tracked repeatPassword = '';
   @tracked errorMessage   = '';
 
   @action
   async setupPassword() {
     event.preventDefault();
-    const { email, password } = this;
 
     try {
       await this.store.fetch('user', {
         method: 'PUT',
         namespace: 'auth/v1',
         body: {
-          email, password
+          email:    this.session.data.authenticated.user.email,
+          password: this.password
         }
       });
       this.router.transitionTo('authenticated');

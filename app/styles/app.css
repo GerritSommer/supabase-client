@@ -1,0 +1,8 @@
+/* app/stytles/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-size: 16px;
+}
