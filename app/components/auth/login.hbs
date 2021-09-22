@@ -6,49 +6,46 @@
     </div>
 
     <div class="mb-4">
-      <div class="mb-1">
-        <label class="block text-gray-500 font-bold mb-1" for="password">
+      {{#let (unique-id)  as |id|}}
+
+        <Forms::Label for={{id}}>
           Email
-        </label>
-      </div>
-      <div>
-        <Input
-          id="email"
-          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-          placeholder="jane-doe@email.com"
+        </Forms::Label>
+
+        <Forms::Input
           @type="email"
           @value={{this.email}}
+          id={{id}}
+          placeholder="jane-doe@email.com"
         />
-      </div>
+      {{/let}}
     </div>
 
     <div class="mb-4">
-      <div class="mb-1">
-        <label class="block text-gray-500 font-bold mb-1" for="inline-password">
+      {{#let (unique-id) as |id|}}
+        <Forms::Label for={{id}}>
           Password
-        </label>
-      </div>
-      <div>
-        <Input
-          id="password"
-          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-          placeholder="******************"
+        </Forms::Label>
+
+        <Forms::Input
           @type="password"
           @value={{this.password}}
+          id={{id}}
+          placeholder="******************"
         />
-      </div>
+      {{/let}}
     </div>
+
     <div class="flex justify-center space-around mt-6">
-      <button
+      <Forms::Button
         type="submit"
         disabled={{this.isRequesting}}
-        class="shadow bg-blue-900 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
       >
         Login
-      </button>
+      </Forms::Button>
       &nbsp;
       <LinkTo
-        @route="application"
+        @route="index"
         disabled={{this.isRequesting}}
         class="hover:bg-gray-50 focus:shadow-outline focus:outline-none text-gray font-bold py-2 px-4 rounded"
       >
