@@ -1,0 +1,86 @@
+<nav class="z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-1 py-2 md:py-1 shadow-lg">
+  <div class="container mx-auto flex flex-wrap items-center justify-between">
+
+    <div class="w-full relative flex items-center justify-between">
+
+      <LinkTo
+        @route="application"
+        class="text-sm font-bold leading-relaxed inline-block mx-2 py-2 px-2 whitespace-nowrap uppercase text-blueGray-700"
+      >
+        sommer.jetzt
+      </LinkTo>
+
+      <ul class="hidden lg:flex flex-row list-none py-2 pr-4">
+        {{yield to="menu-items"}}
+      </ul>
+
+      {{#if this.session.isAuthenticated}}
+        <Controls::Dropdown class="ml-auto">
+
+          <:trigger as |toggleDropdown|>
+            <button
+              type="button"
+              class="px-3 py-1 flex items-center text-3xl text-gray-700 hover:text-gray-500 ml-auto"
+              {{on "click" toggleDropdown}}
+            >
+              {{svg-jar "icon-user"}}
+            </button>
+          </:trigger>
+
+          <:menu as |closeDropdown|>
+
+            <Controls::Dropdown::Link
+              @route="authenticated.account"
+              class="px-4 py-3 border-b flex-col"
+              {{on "click" closeDropdown}}
+            >
+              <p class="text-sm leading-5">Signed in as</p>
+                <p class="text-sm font-medium leading-5 text-blue-500 truncate">
+                {{this.current.user.email}}
+              </p>
+            </Controls::Dropdown::Link>
+
+            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}}>
+              <span>
+                Dark/Light
+              </span>
+            </Controls::Dropdown::Button>
+
+            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}}>
+              <span>
+                Deutsch
+              </span>
+            </Controls::Dropdown::Button>
+
+            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}}>
+              <span>
+                English
+              </span>
+            </Controls::Dropdown::Button>
+
+            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}} class="border-t">
+              <span>
+                Sign out
+              </span>
+            </Controls::Dropdown::Button>
+
+          </:menu>
+        </Controls::Dropdown>
+      {{/if}}
+    </div>
+
+  </div>
+
+
+</nav>
+
+
+{{!-- <footer class="fixed md:hidden z-50 w-full bg-gray-50 bottom-0 flex flex-wrap items-center justify-between px-2 border-t">
+
+    <div class="flex-1 text-center">
+      <LinkTo @route="authenticated.password" class="lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-boldx">
+        password
+      </LinkTo>
+    </div>
+
+</footer> --}}

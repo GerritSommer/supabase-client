@@ -3,12 +3,36 @@
 
 <div class="flex flex-col h-screen text-blueGray-700 antialiased">
 
-  <Main::Navbar />
+  <Layout::Navbar>
+    <:menu-items>
+      {{#if this.session.isAuthenticated}}
+
+        <Layout::Navbar::Link @route="authenticated">
+          Private
+        </Layout::Navbar::Link>
+
+        <Layout::Navbar::Link @route="authenticated.users">
+          Users
+        </Layout::Navbar::Link>
+
+      {{/if}}
+    </:menu-items>
+
+  </Layout::Navbar>
 
   <main class="flex-grow">
     {{outlet}}
   </main>
 
-  <Main::Footer />
+  <Layout::Footer>
+    <:menu-items>
+      <Layout::Footer::Link @route="authenticated">
+        Private
+      </Layout::Footer::Link>
+      <Layout::Footer::Link @route="authenticated.users">
+        Users
+      </Layout::Footer::Link>
+    </:menu-items>
+  </Layout::Footer>
 
 </div>

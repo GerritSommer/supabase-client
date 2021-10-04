@@ -18,6 +18,9 @@ Router.map(function () {
   /////////////////////////////////////
   //////////AUTHENTICATED ROUTES
   this.route('authenticated', { path: '' }, function() {
-    this.route('password');
+    this.route('account', function() {
+      this.route('password');
+    });
+    this.route('users');
   });
 });

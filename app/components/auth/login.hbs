@@ -7,7 +7,6 @@
 
     <div class="mb-4">
       {{#let (unique-id)  as |id|}}
-
         <Forms::Label for={{id}}>
           Email
         </Forms::Label>
@@ -45,21 +44,23 @@
       </Forms::Button>
       &nbsp;
       <LinkTo
-        @route="index"
+        @route="application"
         disabled={{this.isRequesting}}
         class="hover:bg-gray-50 focus:shadow-outline focus:outline-none text-gray font-bold py-2 px-4 rounded"
       >
         Cancel
       </LinkTo>
-    </div>
-  </form>
-  {{!--
 
-  {{#if this.errorMessage}}
-    <p>
-      {{this.errorMessage}}
-    </p>
-  {{/if}}
-   --}}
+    </div>
+
+    {{#if this.errorMessage}}
+      <div class="flex justify-center mt-4 mb-2">
+        <p class="bg-yellow-200 text-yellow-800 py-2 px-4 rounded-2xl text-sm">
+          <i>{{this.errorMessage}}</i>
+        </p>
+      </div>
+    {{/if}}
+
+  </form>
 
 </div>

@@ -24,7 +24,6 @@ module('Integration | Component | auth/login', function(hooks) {
 
     class SessionServiceStub extends Service {
       authenticate(authenticatorName, email, password) {
-        console.log('a');
         assert.equal(authenticatorName, 'authenticator:v1/password', 'sessions authenticate metod is called with the authenticator name');
         assert.equal(email, 'email@domain.com', 'sessions authenticate metod is called with the email');
         assert.equal(password, 'my-password', 'sessions authenticate metod is called with the password');

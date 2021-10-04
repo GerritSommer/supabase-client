@@ -6,6 +6,7 @@ export default class ApplicationRoute extends Route {
   @service session;
   @service store;
   @service router;
+  @service current;
 
   async activate() {
     const hash = parseResponse(window.location.hash);
@@ -14,10 +15,17 @@ export default class ApplicationRoute extends Route {
       await this.session.authenticate('authenticator:v1/magiclink', hash);
 
       if ([ 'invite', 'recovery' ].includes(hash.type)) {
-        return this.router.transitionTo('authenticated.password', { queryParams: { type: hash.type } })
+        console.log('go to password');
+        return this.router.transitionTo('authenticated.account.password', { queryParams: { type: hash.type } })
       }
     }
 
+  }
+
+  beforeModel() {
+    if (this.session.isAuthenticated) {
+     return this.current.loadCurrentUser().catch(() => this.session.invalidate());
+    }
   }
 
 }
