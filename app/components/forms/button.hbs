@@ -1,5 +1,11 @@
 <button
-  class="shadow bg-blue-900 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+  class="
+    shadow bg-blue-900 hover:bg-blue-600
+    focus:shadow-outline focus:outline-none
+    text-white font-bold
+    py-2
+    {{if @isRound "px-2 rounded-full" "px-4 rounded"}}
+  "
   ...attributes
 >
   {{yield}}
