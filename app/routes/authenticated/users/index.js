@@ -5,7 +5,6 @@ export default class AuthenticatedUsersIndexRoute extends Route {
   @service store;
 
   model() {
-    console.log('call');
     return this.store.findAll('user');
   }
 }

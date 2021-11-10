@@ -15,7 +15,6 @@ export default class ApplicationRoute extends Route {
       await this.session.authenticate('authenticator:v1/magiclink', hash);
 
       if ([ 'invite', 'recovery' ].includes(hash.type)) {
-        console.log('go to password');
         return this.router.transitionTo('authenticated.account.password', { queryParams: { type: hash.type } })
       }
     }

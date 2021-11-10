@@ -40,24 +40,24 @@
                 {{this.current.user.email}}
               </p>
             </Controls::Dropdown::Link>
-
-            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}}>
+{{!--
+            <Controls::Dropdown::Button {{on "click" closeDropdown}}>
               <span>
                 Dark/Light
               </span>
             </Controls::Dropdown::Button>
 
-            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}}>
+            <Controls::Dropdown::Button {{on "click" closeDropdown}}>
               <span>
                 Deutsch
               </span>
             </Controls::Dropdown::Button>
 
-            <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}}>
+            <Controls::Dropdown::Button {{on "click" closeDropdown}}>
               <span>
                 English
               </span>
-            </Controls::Dropdown::Button>
+            </Controls::Dropdown::Button> --}}
 
             <Controls::Dropdown::Button {{on "click" this.logout}} {{on "click" closeDropdown}} class="border-t">
               <span>

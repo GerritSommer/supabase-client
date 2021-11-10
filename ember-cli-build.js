@@ -4,6 +4,7 @@ const EmberApp        = require('ember-cli/lib/broccoli/ember-app');
 const ENV             = EmberApp.env();
 const isProductionEnv = ENV === 'production';
 const isTestEnv       = ENV === 'test';
+const isDevEnv        = ENV === 'development';
 const autoprefixer    = require('autoprefixer');
 const tailwind        = require('tailwindcss');
 
@@ -13,6 +14,10 @@ module.exports = function (defaults) {
     tests:   isTestEnv,
     hinting: isTestEnv,
     // hinting: false,
+
+    'ember-cli-deprecation-workflow': {
+      enabled: !isProductionEnv
+    },
 
     fingerprint: {
       enabled:    isProductionEnv

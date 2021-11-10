@@ -71,7 +71,6 @@ export default class FormsFileUploadComponent extends Component {
       fileObject.url         = url;
     }
     catch(error) {
-      console.log(error);
       fileObject.error = error;
     }
     finally {
@@ -98,7 +97,6 @@ export default class FormsFileUploadComponent extends Component {
   onDrop(dragEvent) {
     // dragEvent.stopPropagation(); // stops the browser from redirecting (images or links)
     dragEvent.preventDefault();
-    console.log('onDrop');
     this.reset();
 
     if (this.args.disabled) return true;
