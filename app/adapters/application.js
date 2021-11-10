@@ -10,21 +10,18 @@ export default class ApplicationAdapter extends RESTAdapter {
   apiKey    = ENV.SUPABASE_KEY;
 
   get headers() {
+    const headers = {
+      apikey:         this.apiKey,
+      authorization:  `Bearer ${this.session.data.authenticated.access_token}`,
+      'Content-Type': 'application/json',
+      prefer:         'return=representation'
+    };
+
     if (this.session.isAuthenticated) {
-      return {
-        apikey: this.apiKey,
-        Authorization: `Bearer ${this.session.data.authenticated.access_token}`,
-        'Content-Type': 'application/json',
-        prefer: 'return=representation',
-      };
-    } else {
-      return {
-        apikey: this.apiKey,
-        Authorization: `Bearer ${ENV.supabaseKey}`,
-        'Content-Type': 'application/json',
-        prefer: 'return=representation',
-      };
+      headers['authorization'] = `Bearer ${this.session.data.authenticated.access_token}`;
     }
+
+    return headers;
   }
 
   urlForFindAll() {
