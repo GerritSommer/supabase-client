@@ -42,6 +42,12 @@ module.exports = function (environment) {
   }
 
   if (environment === 'test') {
+
+    ENV.contentSecurityPolicy = {
+      'connect-src': "'self' " + 'https://test.supabase.co',
+      'img-src':     "'self' ",
+    };
+
     // Testem prefers this...
     ENV.locationType = 'none';
 
