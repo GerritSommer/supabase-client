@@ -3,7 +3,7 @@ import isObject  from 'supabase-client/utils/object/is-object';
 
 export default class ObjectTransform extends Transform {
   deserialize(serialized) {
-    return serialized || {};
+    return isObject(serialized) ? serialized : {};
   }
 
   serialize(deserialized) {
