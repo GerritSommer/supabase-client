@@ -31,12 +31,21 @@ module('Unit | Transform | object', function(hooks) {
   });
 
   test('Values are deserialized properly', function(assert) {
+    assert.expect(11);
     const transform = this.owner.lookup('transform:object');
     const obj       = Object.freeze({});
 
-    debugger
+    assert.deepEqual(transform.deserialize(), obj, 'no arguments result in an empty object');
+    assert.deepEqual(transform.deserialize(null), obj, 'null is serialized to an empty object');
+    assert.deepEqual(transform.deserialize(undefined), obj, 'undefined is serialized to an empty object');
+    assert.deepEqual(transform.deserialize(''), obj, 'an empty string is serialized to an empty object');
+    assert.deepEqual(transform.deserialize(' '), obj, 'a string with whitespace is serialized to an empty object');
+    assert.deepEqual(transform.deserialize(true), obj, 'a truthy boolean is serialized to an empty object');
+    assert.deepEqual(transform.deserialize(false), obj, 'a falsy boolean is serialized to an empty object');
+    assert.deepEqual(transform.deserialize({}), obj, 'An empty object is serialized to an empty object');
+    assert.deepEqual(transform.deserialize([]), obj, 'an empty array is serialized to an empty object');
+    assert.deepEqual(transform.deserialize([ '1', { foo: 'bar' } ]), obj, 'A filled array is serialized to an empty object');
+    assert.deepEqual(transform.deserialize({ foo: 'bar' }), { foo: 'bar' }, 'An object with own properties is stays unchanged');
   })
 
-  // deserialize
-  // serialize
 });
