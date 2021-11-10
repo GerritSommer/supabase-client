@@ -2,13 +2,14 @@
   <div class="container mx-auto flex flex-wrap items-center justify-between">
 
     <div class="w-full relative flex items-center justify-between">
-
-      <LinkTo
-        @route="application"
-        class="text-sm font-bold leading-relaxed inline-block mx-2 py-2 px-2 whitespace-nowrap uppercase text-blueGray-700"
-      >
-        sommer.jetzt
-      </LinkTo>
+      <h1>
+        <LinkTo
+          @route="application"
+          class="text-sm font-bold leading-relaxed inline-block mx-2 py-2 px-2 whitespace-nowrap uppercase text-blueGray-700"
+        >
+          sommer.jetzt
+        </LinkTo>
+      </h1>
 
       <ul class="hidden lg:flex flex-row list-none py-2 pr-4">
         {{yield to="menu-items"}}
