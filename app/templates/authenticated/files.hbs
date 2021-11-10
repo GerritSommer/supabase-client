@@ -1,0 +1,35 @@
+{{page-title "Files"}}
+
+{{outlet}}
+
+<Layout::Container>
+
+  <div class="flex flex-wrap space-x-4">
+    {{#each @model as |file|}}
+      <div class="flex border rounded shadow w-1/4">
+        <div class="w-24">
+          <img
+            alt={{file.name}}
+            class="object-cover w-full h-24"
+            src={{file.url}}
+          >
+        </div>
+
+        <p class="px-4 py-2">
+          <p class="leading-5x">
+            <div class="text-md truncate">
+              {{file.name}}
+            </div>
+            <ul class="text-gray-500">
+              <li class="italic">{{file.type}}</li>
+              <li>{{format/filesize file.size}}</li>
+            </ul>
+
+          </p>
+        </p>
+      </div>
+
+    {{/each}}
+  </div>
+
+</Layout::Container>

@@ -21,6 +21,13 @@ Router.map(function () {
     this.route('account', function() {
       this.route('password');
     });
-    this.route('users');
+    this.route('users', function() {
+      this.route('user');
+    });
+    this.route('files', function() {
+      this.route('new');
+    });
+    this.route('new');
   });
+
 });
