@@ -2,6 +2,7 @@
 import RESTSerializer        from '@ember-data/serializer/rest';
 import { inject as service } from '@ember/service';
 import { underscore }        from '@ember/string';
+import { pluralize }         from 'ember-inflector';
 
 export default class ApplicationSerializer extends RESTSerializer {
   @service session;
